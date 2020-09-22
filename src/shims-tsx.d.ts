@@ -1,5 +1,7 @@
 import Vue, { VNode } from 'vue'
 
+declare const BASE: string;
+
 declare global {
   namespace JSX {
     // tslint:disable no-empty-interface
@@ -8,6 +10,11 @@ declare global {
     interface ElementClass extends Vue {}
     interface IntrinsicElements {
       [elem: string]: any;
+    }
+  }
+  namespace jest {
+    interface Matchers<R> {
+      toMatchImageSnapshot(): R
     }
   }
 }
