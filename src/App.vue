@@ -1,13 +1,6 @@
 <template>
   <div class="app" id="app">
-    <div>{{ store.yaw }}</div>
-    <div>{{ store.pitch }}</div>
-    <div class="app-left">
-        <Face />
-    </div>
-    <div class="app-right">
-        <FaceMask />
-    </div>
+    <Face />
   </div>
 </template>
 
@@ -36,6 +29,7 @@ export default class App extends Vue {
     display: flex
     width: 100vw
     height: 100vh
+    background: black
 
 .app-left
     position: relative  

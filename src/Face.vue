@@ -6,6 +6,7 @@
             autoplay
             muted
             playsinline
+            class="video"
         ></video>
         <canvas
             class="canvas"
@@ -44,7 +45,10 @@ export default class extends Vue {
         }
         const inputSize = 512
         const scoreThreshold = 0.5 
-        const options = new faceapi.TinyFaceDetectorOptions({ inputSize, scoreThreshold });
+        const options = new faceapi.TinyFaceDetectorOptions({
+            inputSize,
+            scoreThreshold,
+        });
 
       const ts = Date.now()
 
@@ -54,8 +58,10 @@ export default class extends Vue {
         const dims = faceapi.matchDimensions(this.$refs.canvas, this.$refs.video, true)
         const resizedResult = faceapi.resizeResults(result, dims)
 
-          faceapi.draw.drawDetections(this.$refs.canvas, resizedResult)
-          faceapi.draw.drawFaceLandmarks(this.$refs.canvas, resizedResult)
+          new faceapi.draw.DrawFaceLandmarks(resizedResult.landmarks, {
+            lineColor: 'rgb(255,255,255)',
+            pointColor: 'rgb(255,255,255)',
+          }).draw(this.$refs.canvas);
           store.updateFaceData({
             landmarks: resizedResult.landmarks,
           });
@@ -78,5 +84,8 @@ export default class extends Vue {
     background: 0
     width: auto
     height: auto
+
+.video
+    opacity: 0
 
 </style>

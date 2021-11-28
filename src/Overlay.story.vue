@@ -13,7 +13,7 @@ import {
     Component,
     Vue,
 } from 'vue-property-decorator';
-import '@/shims 
+import '@/shims';
 
 @Component({
     components: { },
