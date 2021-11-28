@@ -2,6 +2,7 @@ import * as Pitch from '@/Pitch';
 import * as Yaw from '@/Yaw';
 import Vector2 from '@/Vector2';
 import type, {
+    action,
     computed,
     observable,
     extendObservable,
@@ -18,7 +19,7 @@ type OnlyFaceLandmarks = {
 type ObservableFaceData = OnlyFaceLandmarks & type.IObservableObject;
 
 export default class Store {
-    faceData: ObservableFaceData;
+    @observable faceData: ObservableFaceData;
     constructor() {
         const landmarks = new FaceLandmarks68(
             [],
@@ -28,11 +29,14 @@ export default class Store {
             landmarks,                         
         }) as ObservableFaceData;
     }
-    updateFaceData(data: OnlyFaceLandmarks) {
-        extendObservable(this.faceData, data);
+    @action updateFaceData(data: OnlyFaceLandmarks) {
+        this.faceData.landmarks = data.landmarks;
+    }
+    @computed get landmarks() {
+        return this.faceData.landmarks;
     }
     @computed get positions() {
-        return this.faceData.landmarks.positions;
+        return this.landmarks.positions;
     }
     @computed get pitch() {
         if(

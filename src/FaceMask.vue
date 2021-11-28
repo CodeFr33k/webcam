@@ -1,5 +1,5 @@
 <template>
-    <div ref="faceBox"> 
+    <div class="face-mask-box" ref="faceBox"> 
     </div>
 </template>
 

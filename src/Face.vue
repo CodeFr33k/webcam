@@ -16,8 +16,6 @@
 
 <script>
 import store from '@/store';
-import * as Pitch from '@/Pitch';
-import Vector2 from '@/Vector2';
 import {
     Component,
     Vue,

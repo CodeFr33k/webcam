@@ -8,6 +8,7 @@
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "skipLibCheck": true,
+    "resolveJsonModule": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
@@ -36,7 +37,6 @@
     "tests/**/*.tsx"
   ],
   "exclude": [
-    "node_modules",
-    "src/**/*.story.vue"
+    "node_modules"
   ]
 }
